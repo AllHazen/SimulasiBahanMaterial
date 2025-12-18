@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulasi Sifat Magnetik Material</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Simulasi Sifat Magnetik Material</h1>
+        <p class="subtitle">
+          Visualisasi respons diamagnetik, paramagnetik, dan feromagnetik
+          terhadap medan magnet eksternal
+        </p>
+      </header>
+
+      <div class="main-content">
+        <div class="control-panel">
+          <div class="control-section">
+            <h2><i class="fas fa-sliders-h"></i> Kontrol Simulasi</h2>
+
+            <div class="material-selector">
+              <h3>Jenis Material</h3>
+              <div class="material-buttons">
+                <button id="diamagnetic-btn" class="material-btn active">
+                  <i class="fas fa-ban"></i> Diamagnetik
+                </button>
+                <button id="paramagnetic-btn" class="material-btn">
+                  <i class="fas fa-random"></i> Paramagnetik
+                </button>
+                <button id="ferromagnetic-btn" class="material-btn">
+                  <i class="fas fa-arrows-alt-h"></i> Feromagnetik
+                </button>
+              </div>
+            </div>
+
+            <div class="field-control">
+              <h3>Kontrol Medan Magnet Eksternal</h3>
+              <div class="slider-container">
+                <label for="field-slider"
+                  >Kekuatan Medan Magnet (B):
+                  <span id="field-value">0.0</span> T</label
+                >
+                <input
+                  type="range"
+                  id="field-slider"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="1"
+                />
+                <div class="slider-labels">
+                  <span>0 T</span>
+                  <span>50 T</span>
+                  <span>100 T</span>
+                </div>
+              </div>
+
+              <div class="field-buttons">
+                <button id="increase-field" class="action-btn">
+                  <i class="fas fa-plus"></i> Naikkan Medan
+                </button>
+                <button id="decrease-field" class="action-btn">
+                  <i class="fas fa-minus"></i> Turunkan Medan
+                </button>
+                <button id="zero-field" class="action-btn">
+                  <i class="fas fa-power-off"></i> Matikan Medan
+                </button>
+              </div>
+            </div>
+
+            <div class="temperature-control" id="temp-control">
+              <h3>Kontrol Suhu (Paramagnetik)</h3>
+              <div class="slider-container">
+                <label for="temp-slider"
+                  >Suhu: <span id="temp-value">300</span> K</label
+                >
+                <input
+                  type="range"
+                  id="temp-slider"
+                  min="10"
+                  max="600"
+                  value="300"
+                  step="10"
+                />
+                <div class="slider-labels">
+                  <span>10 K</span>
+                  <span>305 K</span>
+                  <span>600 K</span>
+                </div>
+              </div>
+              <p class="info-text">
+                Suhu tinggi mengurangi penyelarasan momen magnetik pada material
+                paramagnetik
+              </p>
+            </div>
+
+            <div class="reset-control">
+              <button id="reset-btn" class="reset-btn">
+                <i class="fas fa-redo"></i> Reset Simulasi
+              </button>
+            </div>
+          </div>
+
+          <div class="info-panel">
+            <h2><i class="fas fa-info-circle"></i> Informasi Material</h2>
+            <div class="material-info" id="material-info">
+              <h3 id="current-material">Diamagnetik</h3>
+              <p id="material-description">
+                Material diamagnetik tidak memiliki momen magnetik permanen.
+                Ketika medan magnet diterapkan, muncul momen magnetik induksi
+                yang berlawanan arah dengan medan eksternal.
+              </p>
+
+              <div class="property-list">
+                <div class="property">
+                  <span class="property-label">Kerentanan Magnetik (χ):</span>
+                  <span
+                    class="property-value negative"
+                    id="susceptibility-value"
+                    >≈ -10⁻⁵</span
+                  >
+                </div>
+                <div class="property">
+                  <span class="property-label">Magnetisasi (M):</span>
+                  <span class="property-value" id="magnetization-value"
+                    >0.0 A/m</span
+                  >
+                </div>
+                <div class="property">
+                  <span class="property-label">Arah Magnetisasi:</span>
+                  <span class="property-value" id="moment-direction">
+                    <span id="direction-arrow"></span>
+                    <span id="direction-text">Tidak ada tanpa medan</span>
+                  </span>
+                </div>
+                <div class="property">
+                  <span class="property-label">Sifat:</span>
+                  <span class="property-value" id="material-property"
+                    >Lemah dan menolak medan</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="legend">
+              <div class="legend-item">
+                <div
+                  class="legend-color"
+                  style="background-color: #4a90e2"
+                ></div>
+                <span>Atom</span>
+              </div>
+              <div class="legend-item">
+                <div
+                  class="legend-arrow"
+                  style="border-left-color: #e74c3c"
+                ></div>
+                <span>Momen Magnetik (μ)</span>
+              </div>
+              <div class="legend-item">
+                <div
+                  class="legend-arrow"
+                  style="border-left-color: #2ecc71; transform: scale(1.5)"
+                ></div>
+                <span>Medan Magnet Eksternal (B)</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-domain"></div>
+                <span>Domain Magnetik (Feromagnetik)</span>
+              </div>
+              <div class="legend-item">
+                <div
+                  class="legend-color"
+                  style="background-color: #ffd700"
+                ></div>
+                <span>Magnetisasi Total (M)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="visualization-area">
+          <div class="simulation-header">
+            <h2><i class="fas fa-atom"></i> Visualisasi Material</h2>
+            <div class="material-indicator">
+              Material Aktif:
+              <span id="active-material-name" class="diamagnetic-text"
+                >Diamagnetik</span
+              >
+            </div>
+          </div>
+
+          <div class="canvas-container">
+            <canvas id="material-canvas" width="800" height="500"></canvas>
+            <div class="external-field-indicator">
+              <span>Medan Magnet Eksternal: </span>
+              <div id="field-arrow"></div>
+            </div>
+          </div>
+
+          <div class="graph-container">
+            <h3>
+              <i class="fas fa-chart-line"></i> Kurva Magnetisasi (M vs B)
+            </h3>
+            <canvas id="graph-canvas" width="800" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

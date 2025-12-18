@@ -1,0 +1,510 @@
+/* Reset dan gaya dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e6e6e6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: rgba(30, 30, 46, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #4a90e2;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #4a90e2;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #a0a0c0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Konten utama */
+.main-content {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        flex-direction: column;
+    }
+}
+
+/* Panel kontrol */
+.control-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    min-width: 350px;
+}
+
+.control-section, .info-panel {
+    background: rgba(40, 40, 60, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.control-section h2, .info-panel h2 {
+    color: #4a90e2;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Pemilihan material */
+.material-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.material-btn {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2a2a40;
+    color: #c0c0e0;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.material-btn:hover {
+    background-color: #3a3a50;
+    transform: translateY(-2px);
+}
+
+.material-btn.active {
+    transform: scale(1.02);
+}
+
+#diamagnetic-btn.active {
+    background-color: #3498db;
+    color: white;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+}
+
+#paramagnetic-btn.active {
+    background-color: #e74c3c;
+    color: white;
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+}
+
+#ferromagnetic-btn.active {
+    background-color: #2ecc71;
+    color: white;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+}
+
+/* Kontrol slider */
+.slider-container {
+    margin-bottom: 20px;
+}
+
+.slider-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #a0a0c0;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 10px;
+    -webkit-appearance: none;
+    background: linear-gradient(to right, #1a1a2e, #4a90e2);
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #4a90e2;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #8080a0;
+}
+
+/* Tombol aksi */
+.field-buttons, .reset-control {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.action-btn, .reset-btn {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4a90e2;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 150px;
+}
+
+.action-btn:hover, .reset-btn:hover {
+    background-color: #3a80d2;
+    transform: translateY(-2px);
+}
+
+#zero-field {
+    background-color: #e74c3c;
+}
+
+#zero-field:hover {
+    background-color: #d73c2c;
+}
+
+.reset-btn {
+    background-color: #9b59b6;
+    margin-top: 10px;
+}
+
+.reset-btn:hover {
+    background-color: #8b49a6;
+}
+
+/* Panel informasi */
+.property-list {
+    margin-top: 20px;
+    background: rgba(30, 30, 50, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.property {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(100, 100, 140, 0.3);
+}
+
+.property:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.property-label {
+    color: #a0a0c0;
+    font-weight: 600;
+}
+
+.property-value {
+    color: #e6e6e6;
+    font-weight: 600;
+}
+
+#direction-arrow {
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+.negative {
+    color: #e74c3c;
+}
+
+.positive {
+    color: #2ecc71;
+}
+
+/* Legenda */
+.legend {
+    margin-top: 25px;
+}
+
+.legend h3 {
+    color: #4a90e2;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 12px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.legend-arrow {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 20px solid;
+}
+
+.legend-domain {
+    width: 30px;
+    height: 20px;
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    border-radius: 4px;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+/* Area visualisasi */
+.visualization-area {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.simulation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.material-indicator {
+    background-color: rgba(52, 152, 219, 0.2);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    border: 2px solid #3498db;
+}
+
+.diamagnetic-text {
+    color: #3498db;
+}
+
+.paramagnetic-text {
+    color: #e74c3c;
+}
+
+.ferromagnetic-text {
+    color: #2ecc71;
+}
+
+/* Canvas */
+.canvas-container {
+    background-color: rgba(20, 20, 35, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    min-height: 540px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#material-canvas {
+    border-radius: 8px;
+    background-color: #0f0f1a;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.external-field-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(46, 204, 113, 0.2);
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid rgba(46, 204, 113, 0.5);
+}
+
+#field-arrow {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 40px solid #2ecc71;
+    transition: transform 0.5s ease;
+}
+
+/* Grafik */
+.graph-container {
+    background-color: rgba(40, 40, 60, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.graph-container h3 {
+    color: #4a90e2;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#graph-canvas {
+    border-radius: 8px;
+    background-color: #0f0f1a;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tujuan pembelajaran */
+.learning-objectives {
+    background: rgba(40, 40, 60, 0.8);
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.learning-objectives h2 {
+    color: #4a90e2;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.objectives-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.objective {
+    flex: 1;
+    min-width: 250px;
+    background-color: rgba(30, 30, 50, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.objective i {
+    color: #2ecc71;
+    font-size: 1.2rem;
+    margin-top: 3px;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(100, 100, 140, 0.3);
+    color: #8080a0;
+    font-size: 0.9rem;
+}
+
+.hint {
+    margin-top: 10px;
+    color: #f1c40f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .material-buttons {
+        flex-direction: column;
+    }
+    
+    .field-buttons, .reset-control {
+        flex-direction: column;
+    }
+    
+    .action-btn, .reset-btn {
+        min-width: 100%;
+    }
+    
+    .simulation-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .objectives-list {
+        flex-direction: column;
+    }
+}
